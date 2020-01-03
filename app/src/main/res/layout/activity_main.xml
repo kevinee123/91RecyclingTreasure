@@ -1,18 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/mContentLl"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/mNavigationBarLl"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/mNavigationBarLl"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/mStatisticsTv"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/icon_statistics"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/statistics" />
+
+        <TextView
+            android:id="@+id/mOrderTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/icon_order_selected"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/order"
+            android:textColor="@color/green_3EAB73" />
+
+        <TextView
+            android:id="@+id/mMineTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/icon_mine"
+            android:textColor="@color/black"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/mine" />
+
+    </LinearLayout>
+</RelativeLayout>
