@@ -1,4 +1,4 @@
-package com.asto.a91recyclingtreasure.mvp.contract
+package com.asto.a91recyclingtreasure.mvp.contract.order
 
 /**
  * 作者 ：nxk

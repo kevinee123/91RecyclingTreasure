@@ -1,4 +1,4 @@
-package com.asto.recyclingbins.base
+package com.asto.a91recyclingtreasure.base
 
 import com.asto.a91recyclingtreasure.core.Common
 

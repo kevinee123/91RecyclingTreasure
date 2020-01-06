@@ -12,7 +12,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "com.google.android.material:material:1.0.0"
 //    implementation 'androidx.com.asto.a91recyclingtreasure.core:com.asto.a91recyclingtreasure.core-ktx:1.0.2'
 //    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -42,4 +43,11 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    //simpleAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    //RxKotlin
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    //rxbinding(依赖于rxjava 不需要重复依赖)
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
 }

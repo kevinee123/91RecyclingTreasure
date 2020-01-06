@@ -8,4 +8,11 @@
     <string name="mine">我的</string>
     <string name="order">订单</string>
     <string name="statistics">统计</string>
+    <string name="today_order">今日订单</string>
+    <string name="today_expend">今日支付</string>
+    <string name="unit_ge">个</string>
+    <string name="unit_yuan">元</string>
+    <string name="detail">详情</string>
+    <string name="delete">作废</string>
+    <string name="order_count">单数</string>
 </resources>
