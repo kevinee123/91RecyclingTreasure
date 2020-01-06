@@ -31,11 +31,10 @@ class MainActivity : BaseActivity(),MainContract.View {
         get() = R.layout.activity_main
 
     override fun initData() {
-
+        showOrder()
     }
 
     override fun bindinOnClickListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

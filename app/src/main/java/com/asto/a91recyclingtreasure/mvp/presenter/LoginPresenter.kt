@@ -20,7 +20,10 @@ class LoginPresenter(var view: LoginActivity) : BasePresenter(view), LoginContra
     @SuppressLint("CheckResult")
     override fun login() {
         if (isViewAttached()) {
-            model.login(view.mAccountEdt.text.toString(), view.mPasswordEdt.text.toString())
+            view.showLoading()
+            //TODO 测试代码 后期修改
+//            model.login(view.mAccountEdt.text.toString(), view.mPasswordEdt.text.toString())
+            model.login("admin", "123456")
                 .compose(RxUtil.applySchedulers()).subscribe {
                 view.dismissLoading()
                 if (it.isSuccess) {
@@ -28,7 +31,7 @@ class LoginPresenter(var view: LoginActivity) : BasePresenter(view), LoginContra
                     view.finishAllActivity()
                     view.startActivity(Intent(view,MainActivity::class.java))
                 } else {
-                    view.showToast(it.message)
+                    view.showToast(it.msg)
                 }
             }
         }

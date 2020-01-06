@@ -97,17 +97,19 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="20dp"
-        android:background="@color/black" />
+        android:background="@color/black_10" />
 
     <com.asto.a91recyclingtreasure.widget.MyTabLayout
         android:id="@+id/mTabLayout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/white"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/green_3EAB73"
-        app:tabTextColor="@android:color/black" />
+        android:layout_gravity="center"
+        android:background="@color/white" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black_10" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/mViewPager"

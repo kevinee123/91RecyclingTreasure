@@ -24,7 +24,8 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
         get() = R.layout.fragment_order
 
     val mTitleList = listOf("待结算", "待审核", "审核未付", "审核已付")
-    val listFragments = listOf<Fragment>(PricingFragment(mActivity))
+    //TODO 后期修改
+    val listFragments = listOf<Fragment>(PricingFragment(mActivity),PricingFragment(mActivity),PricingFragment(mActivity),PricingFragment(mActivity))
 
     override fun initViews(mView: View) {
     }
@@ -44,7 +45,8 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
             val mNameTv = inflate.findViewById<TextView>(R.id.mNameTv)
             val mCountTv = inflate.findViewById<TextView>(R.id.mCountTv)
             mNameTv.text = title
-//            mCountTv.text =
+//       TODO 订单数量     mCountTv.text =
+            mCountTv.visibility = View.GONE
             tab.customView = inflate
             mTabLayout.addTab(tab)
         }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -16,6 +16,15 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
+    </style>
+
+    <!-- 修改tabLayout的背景色，提示线的颜色，字体颜色等-->
+    <style name="Base.Widget.Design.TabLayout" parent="android:Widget" tools:ignore="PrivateResource">
+        <item name="tabBackground">@android:color/white</item>
+        <item name="tabIndicatorColor">@color/green_3EAB73</item>
+        <item name="tabIndicatorHeight">2dp</item>
+<!--        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>-->
+        <item name="tabSelectedTextColor">@color/green_3EAB73</item>
     </style>
 
 </resources>

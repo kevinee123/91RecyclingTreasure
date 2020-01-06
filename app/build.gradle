@@ -33,6 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 //    androidTestImplementation 'androidx.test.espresso:espresso-com.asto.a91recyclingtreasure.core:3.1.1'
+    implementation 'com.google.android.material:material:1.0.0'
     //友盟
     implementation 'com.umeng.umsdk:analytics:8.0.0'
     implementation 'com.umeng.umsdk:common:2.0.0'
@@ -41,13 +42,16 @@ dependencies {
     //Logger
     implementation 'com.orhanobut:logger:2.2.0'
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    //simpleAdapter
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     //RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     //rxbinding(依赖于rxjava 不需要重复依赖)
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
+    //simpleAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    // Anko 协程扩展
+    implementation 'org.jetbrains.anko:anko-sdk15-coroutines:0.10.8'
 }

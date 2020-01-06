@@ -43,6 +43,9 @@
         android:drawableLeft="@drawable/icon_account"
         android:drawablePadding="5dp"
         android:hint="@string/pls_input_account_name"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:maxLines="1"
         android:outlineSpotShadowColor="@color/red_FF5544"
         android:paddingBottom="20dp"
         android:textSize="14dp" />
@@ -56,7 +59,9 @@
         android:drawableRight="@drawable/icon_eyes_close"
         android:drawablePadding="5dp"
         android:hint="@string/pls_input_password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:maxLines="1"
         android:outlineSpotShadowColor="@color/red_FF5544"
         android:paddingBottom="20dp"
         android:textSize="14dp" />

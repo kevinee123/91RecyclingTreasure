@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">91RecyclingTreasure</string>
+    <string name="app_name">91回收宝</string>
     <string name="welcome_back">欢迎您回来</string>
+    <string name="http_error">网络异常</string>
+
     <string name="pls_input_account_name">请输入用户名</string>
     <string name="pls_input_password">请输入密码</string>
     <string name="forgot_password">忘记密码</string>

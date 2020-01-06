@@ -6,6 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitUtil {
@@ -20,16 +21,6 @@ class RetrofitUtil {
         return httpBuilder.addInterceptor(interceptor)
     }
 
-    /**
-     * 设置转换器(返回类型)
-     *
-     * @param factory
-     * @return
-     */
-    fun setConverterFactory(factory: Converter.Factory): Retrofit.Builder {
-        return retrofitBuilder.addConverterFactory(factory)
-    }
-
     companion object {
 
         private var isAdded = false
@@ -40,6 +31,7 @@ class RetrofitUtil {
 
         private fun init() {
             retrofitBuilder
+                    //设置转换器(返回类型)
                 .addConverterFactory(
                     GsonConverterFactory.create(
                         GsonBuilder()
@@ -47,6 +39,7 @@ class RetrofitUtil {
                             .create()
                     )
                 )
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(httpBuilder.build())
                 .baseUrl(Common.BASE_URL)
             isAdded = !isAdded
