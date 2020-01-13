@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="60dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/mTypeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_normal"
+        tools:text="待选品类" />
+
+    <TextView
+        android:id="@+id/mDateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/gray_B2B2B2"
+        android:textSize="@dimen/text_small"
+        tools:text="2019/11/28 14:29" />
+
+    <TextView
+        android:id="@+id/mWeightTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mTypeTv"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black_60"
+        tools:text="毛重 212.0kg" />
+
+    <TextView
+        android:id="@+id/mPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mTypeTv"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/mWeightTv"
+        android:textColor="@color/black_60"
+        tools:text="单价 -元/kg" />
+
+    <TextView
+        android:id="@+id/mSuttleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mWeightTv"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/black_60"
+        tools:text="净重 -kg" />
+
+    <TextView
+        android:id="@+id/subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mSuttleTv"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_normal"
+        tools:text="小计：" />
+
+    <TextView
+        android:id="@+id/mSubtotalTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mSuttleTv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/subtotal"
+        android:text="￥"
+        android:textColor="@color/green_3EAB73"
+        android:textSize="@dimen/text_normal" />
+
+    <View
+        android:id="@+id/mLineV"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/mSubtotalTv"
+        android:layout_marginTop="15dp"
+        android:background="@color/black_10" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mLineV"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mDeleteTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_btn_red_border"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="@string/delete"
+            android:textColor="@color/red_FF5544"
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/mDetailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_btn_green_border"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="@string/pricing"
+            android:textColor="@color/green_3EAB73"
+            android:textSize="@dimen/text_small" />
+    </LinearLayout>
+</RelativeLayout>

@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="@dimen/text_normal"
             tools:text="超市合约客户" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="12dp"
+            android:textSize="@dimen/text_small"
             tools:text="2019/11/28 14:29" />
 
         <LinearLayout
@@ -40,16 +40,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order_count"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:textColor="@color/black_60"
+                android:textSize="@dimen/text_small" />
 
             <TextView
                 android:id="@+id/mCountTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textColor="@color/black_60"
+                android:textSize="@dimen/text_small"
                 tools:text="212" />
         </LinearLayout>
     </LinearLayout>
@@ -61,24 +61,32 @@
         android:layout_centerVertical="true"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/mDeleteBtn"
+        <TextView
+            android:id="@+id/mDeleteTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_btn_red_border"
-            android:text="@string/delete"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="@string/delete_zf"
             android:textColor="@color/red_FF5544"
-            android:textSize="12dp" />
+            android:textSize="@dimen/text_small" />
 
-        <Button
-            android:id="@+id/mDetailBtn"
+        <TextView
+            android:id="@+id/mDetailTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@drawable/shape_btn_green_border"
-            android:text="@string/detail"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="8dp"
+            android:text="@string/settle"
             android:textColor="@color/green_3EAB73"
-            android:textSize="12dp" />
+            android:textSize="@dimen/text_small" />
     </LinearLayout>
 
     <View
@@ -86,6 +94,6 @@
         android:layout_height="0.5dp"
         android:layout_below="@+id/mContentLl"
         android:layout_marginTop="15dp"
-        android:background="@color/black" />
+        android:background="@color/black_10" />
 
 </RelativeLayout>

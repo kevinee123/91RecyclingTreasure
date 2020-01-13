@@ -30,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/welcome_back"
         android:textColor="@color/black_2E2E2E"
-        android:textSize="18dp"
+        android:textSize="@dimen/text_big_x"
         android:textStyle="bold" />
 
     <EditText
@@ -48,7 +48,7 @@
         android:maxLines="1"
         android:outlineSpotShadowColor="@color/red_FF5544"
         android:paddingBottom="20dp"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_normal" />
 
     <EditText
         android:id="@+id/mPasswordEdt"
@@ -64,7 +64,7 @@
         android:maxLines="1"
         android:outlineSpotShadowColor="@color/red_FF5544"
         android:paddingBottom="20dp"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_normal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@color/red_FF5544"
-            android:textSize="14dp"
+            android:textSize="@dimen/text_normal"
             tools:text="密码错误" />
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/forgot_password"
             android:textColor="@color/green_3EAB73"
-            android:textSize="14dp" />
+            android:textSize="@dimen/text_normal" />
     </RelativeLayout>
 
     <Button
@@ -98,5 +98,5 @@
         android:background="@drawable/shape_btn_green"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="@dimen/text_big" />
 </LinearLayout>

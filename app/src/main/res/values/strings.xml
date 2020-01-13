@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">91回收宝</string>
     <string name="welcome_back">欢迎您回来</string>
-    <string name="http_error">网络异常</string>
+    <string name="http_error">未知网络异常</string>
 
     <string name="pls_input_account_name">请输入用户名</string>
     <string name="pls_input_password">请输入密码</string>
@@ -12,9 +12,46 @@
     <string name="statistics">统计</string>
     <string name="today_order">今日订单</string>
     <string name="today_expend">今日支付</string>
+    <string name="detail">详情</string>
+    <string name="delete_zf">作废</string>
+    <string name="audit">审核</string>
+    <string name="pricing">定价</string>
+    <string name="payment">支付</string>
+    <string name="look">查看</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="order_count">单数</string>
+    <string name="http_error_time_out">连接超时</string>
+    <string name="http_error_cannot_connect">无法连接到服务器，请检查网络</string>
+    <string name="http_error_file_not_found">服务器搬家了，请稍后再试</string>
+    <string name="http_error_unknown_host">服务器地址错误，请检查网络</string>
+    <string name="actual_price">实际总价：</string>
+    <string name="merger_review">合并审核</string>
+    <string name="merger_review_msg">提交即完成付款审核</string>
+    <string name="audit_payment">审核支付</string>
+    <string name="audit_payment_msg">审核状态标注为“审核支付”</string>
+    <string name="settle">结算</string>
+    <string name="submit">提交</string>
+    <string name="gross_weight_d_unit">毛重 %skg</string>
+    <string name="price_d_unit">单价 %s元/kg</string>
+    <string name="suttle_d_unit">净重 %skg</string>
+    <string name="rmb_d">￥%s</string>
+    <string name="record_d">%d条记录</string>
+    <string name="price">单价</string>
+    <string name="gross_weight">毛重</string>
+    <string name="suttle">净重</string>
+    <string name="point">扣点</string>
+    <string name="clasp">扣杂</string>
+    <string name="settlement_price">结算总价</string>
+
+    <!--单位-->
     <string name="unit_ge">个</string>
     <string name="unit_yuan">元</string>
-    <string name="detail">详情</string>
-    <string name="delete">作废</string>
-    <string name="order_count">单数</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_yuan_kg">元/kg</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确认</string>
+    <string name="delete_detail_msg">是否将该品类删除？\n删除后不可恢复</string>
+    <string name="delete_order_msg">是否将该笔订单作废？\n作废后不可恢复</string>
 </resources>

@@ -31,8 +31,9 @@ class WelcomeActivity : BaseActivity(),WelcomeContract.View{
 
     override fun next() {
         finish()
-        if(ASimpleCache.get(this).getAsString(Common.TOKEN) != null){
+        if(ASimpleCache.get(this).getAsString(Common.BEAN_TOKEN) != null){
             //TODO 跳转主界面
+            startActivity(Intent(this,MainActivity::class.java))
         }else{
             startActivity(Intent(this,LoginActivity::class.java))
         }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/order"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="@dimen/text_big_xx" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/black_2E2E2E"
-                android:textSize="24dp"
+                android:textSize="@dimen/text_big_xxx"
                 tools:text="145" />
 
             <TextView
@@ -64,7 +65,7 @@
                 android:gravity="center"
                 android:text="@string/unit_ge"
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="@dimen/text_normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/green_3EAB73"
-                android:textSize="24dp"
+                android:textSize="@dimen/text_big_xxx"
                 tools:text="2358.6" />
 
             <TextView
@@ -89,7 +90,7 @@
                 android:gravity="center"
                 android:text="@string/unit_yuan"
                 android:textColor="@color/green_3EAB73"
-                android:textSize="14dp" />
+                android:textSize="@dimen/text_normal" />
         </LinearLayout>
     </LinearLayout>
 
@@ -104,7 +105,9 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:background="@color/white" />
+        android:background="@color/white"
+        app:tabIndicatorColor="@color/green_3EAB73"
+        app:tabSelectedTextColor="@color/green_3EAB73" />
 
     <View
         android:layout_width="match_parent"
@@ -114,6 +117,6 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white" />
+        android:layout_height="match_parent" />
+
 </LinearLayout>

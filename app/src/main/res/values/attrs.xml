@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HeadView">
+        <attr name="title" format="string" />
+        <attr name="show_left" format="integer" >
+            <enum name="gone" value="8" />
+            <enum name="visible" value="0" />
+        </attr>
+        <attr name="show_right" format="integer" >
+            <enum name="gone" value="8" />
+            <enum name="visible" value="0" />
+        </attr>
+    </declare-styleable>
+
+
+</resources>

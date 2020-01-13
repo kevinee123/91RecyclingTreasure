@@ -13,6 +13,7 @@ abstract class BaseFragment<A : BaseActivity> : Fragment(),IView {
     abstract val layoutId: Int
     lateinit var mView : View
     abstract val mActivity: A
+    abstract val mPresenter : BasePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(layoutId, container, false)
@@ -21,12 +22,14 @@ abstract class BaseFragment<A : BaseActivity> : Fragment(),IView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews(mView)
-        bindinOnClickListener(mView)
         initDatas(mView)
+        bindinOnClickListener(mView)
     }
 
-    abstract fun initViews(mView: View)
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachView()
+    }
 
     abstract fun initDatas(mView : View)
 

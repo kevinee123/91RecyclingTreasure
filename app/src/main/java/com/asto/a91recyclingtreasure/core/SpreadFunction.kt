@@ -3,23 +3,28 @@ package com.asto.recyclingbins.core
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Build
+import android.provider.Settings
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.core.content.ContextCompat.startActivity
-import android.provider.Settings.ACTION_SETTINGS
-import android.content.Intent
-import android.R.attr.fragment
-import android.provider.Settings
-import android.view.WindowManager
+import com.asto.a91recyclingtreasure.R
 import com.asto.a91recyclingtreasure.core.MyApplication
+import com.asto.a91recyclingtreasure.mvp.view.LoginActivity
+import com.asto.a91recyclingtreasure.util.ASimpleCache
+import kotlinx.android.synthetic.main.dialog_alert.*
+import java.text.DecimalFormat
 
 
 /**
@@ -65,6 +70,15 @@ fun Activity.finishAllActivity() {
     var activityList = (application as MyApplication).getActivityList()
     for (activity in activityList) activity.finish()
     activityList.clear()
+}
+
+/**
+ * 退出登录
+ */
+fun Activity.loginOut(){
+    finishAllActivity()
+    ASimpleCache.get(this).clear()
+    startActivity(Intent(this,LoginActivity::class.java))
 }
 
 /**
@@ -115,6 +129,42 @@ fun Activity.immersion(){
         //透明状态栏
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         //透明导航栏
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
     }
+}
+
+
+//保留两位小数
+fun to2Point(any: Any) : String{
+    val decimalFormat = DecimalFormat("#0.00")
+    return decimalFormat.format(any)
+}
+
+fun EditText.requestFocusAndShowKeyboard(){
+    requestFocus()
+    val inputManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputManager.showSoftInput(this, 0)
+}
+
+
+/**
+ * 显示提示框dialog
+ */
+@SuppressLint("NewApi")
+fun showAlertDialog(context: Context,text : String,onClickListener: (AlertDialog) -> Unit) : AlertDialog {
+    val dialog = AlertDialog.Builder(context)
+        .setView(R.layout.dialog_alert)
+        .create()
+    dialog.setCanceledOnTouchOutside(true)
+    dialog.show()
+    dialog.mTextTv.text = text
+    dialog.mCancelBtn.setOnClickListener {
+        dialog.dismiss()
+    }
+    dialog.mSureBtn.setOnClickListener {
+        //按下确定键后的事件
+        onClickListener(dialog)
+    }
+    return dialog
 }

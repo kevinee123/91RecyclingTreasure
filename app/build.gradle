@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -48,6 +52,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     //RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    //okhttp3:logging-interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
     //rxbinding(依赖于rxjava 不需要重复依赖)
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
     //simpleAdapter

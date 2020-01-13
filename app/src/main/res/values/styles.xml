@@ -10,10 +10,10 @@
     </style>
 
     <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:paddingLeft">15dp</item>
-        <item name="android:paddingRight">15dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
     </style>
@@ -23,7 +23,7 @@
         <item name="tabBackground">@android:color/white</item>
         <item name="tabIndicatorColor">@color/green_3EAB73</item>
         <item name="tabIndicatorHeight">2dp</item>
-<!--        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>-->
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">@color/green_3EAB73</item>
     </style>
 

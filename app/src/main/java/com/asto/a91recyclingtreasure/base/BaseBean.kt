@@ -11,7 +11,7 @@ data class BaseBean<T>(val code : Int,val token : String, val msg: String,val da
 
     //登录失效
     val isLoginOut: Boolean
-        get() = code == Common.HTTP_LOGIN_OUT
+        get() = code == Common.HTTP_LOGIN_OUT || code == Common.HTTP_LOGIN_OUT_121
 
 
 }
