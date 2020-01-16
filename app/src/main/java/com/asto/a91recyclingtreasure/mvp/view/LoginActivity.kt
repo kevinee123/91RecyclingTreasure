@@ -8,6 +8,7 @@ import com.asto.a91recyclingtreasure.mvp.contract.LoginContract
 import com.asto.a91recyclingtreasure.mvp.presenter.LoginPresenter
 import com.asto.a91recyclingtreasure.base.BaseActivity
 import com.asto.a91recyclingtreasure.base.BasePresenter
+import com.asto.recyclingbins.core.dp2px
 import com.asto.recyclingbins.core.immersion
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -55,9 +56,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         if (isShow) {
             //显示密码
             val leftDrawable = resources.getDrawable(R.drawable.icon_password)
-            leftDrawable .setBounds(0, 0, 40, 40)//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
+            leftDrawable .setBounds(0, 0, dp2px(this,40),  dp2px(this,40))//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
             val rightDrawable = resources.getDrawable(R.drawable.icon_eyes)
-            rightDrawable .setBounds(0, 0, 40, 40)//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
+            rightDrawable .setBounds(0, 0,  dp2px(this,40),  dp2px(this,40))//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
 
             mPasswordEdt.setCompoundDrawables(leftDrawable,null,rightDrawable,null)
             mPasswordEdt.transformationMethod =
@@ -65,9 +66,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         } else {
             //隐藏密码
             val leftDrawable = resources.getDrawable(R.drawable.icon_password)
-            leftDrawable .setBounds(0, 0, 40, 40)//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
+            leftDrawable .setBounds(0, 0,  dp2px(this,40),  dp2px(this,40))//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
             val rightDrawable = resources.getDrawable(R.drawable.icon_eyes_close)
-            rightDrawable .setBounds(0, 0, 40, 40)//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
+            rightDrawable .setBounds(0, 0,  dp2px(this,40),  dp2px(this,40))//第一个 0 是距左边距离，第二个 0 是距上边距离，40 分别是长宽
             mPasswordEdt.setCompoundDrawables(leftDrawable,null,rightDrawable,null)
             mPasswordEdt.transformationMethod =
                 PasswordTransformationMethod.getInstance()
