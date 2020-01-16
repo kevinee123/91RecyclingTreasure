@@ -61,7 +61,7 @@
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal"
-        tools:text="小计：" />
+        android:text="小计：" />
 
     <TextView
         android:id="@+id/mSubtotalTv"

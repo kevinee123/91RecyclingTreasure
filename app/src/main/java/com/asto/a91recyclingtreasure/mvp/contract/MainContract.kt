@@ -19,10 +19,5 @@ interface MainContract {
          */
         fun statisticsTodayData()
 
-        /**
-         * 待定价列表
-         */
-        fun getPricingList()
-
     }
 }

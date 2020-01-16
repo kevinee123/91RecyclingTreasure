@@ -1,9 +1,11 @@
 package com.asto.a91recyclingtreasure.mvp.presenter.order
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import com.asto.a91recyclingtreasure.base.BasePresenter
 import com.asto.a91recyclingtreasure.core.Common
 import com.asto.a91recyclingtreasure.mvp.contract.order.OrderDetailsListContract
+import com.asto.a91recyclingtreasure.mvp.view.order.OrderDetailActivity
 import com.asto.a91recyclingtreasure.mvp.view.order.OrderDetailsListActivity
 import com.asto.a91recyclingtreasure.util.RxUtil
 import com.asto.recyclingbins.core.loginOut
@@ -101,4 +103,50 @@ class OrderDetailsListPresenter(var view: OrderDetailsListActivity) : BasePresen
                 }
         }
     }
+
+    /**
+     * 审核未付
+     * @param order_id 订单id
+     */
+    @SuppressLint("CheckResult")
+    override fun orderAuditNotPay(order_id: Int){
+        if (isViewAttached()) {
+            view.showLoading()
+            model.orderAuditNotPay(order_id).compose(RxUtil.applySchedulers())
+                .subscribe {
+                    view.dismissLoading()
+                    if (it.isSuccess) {
+                        view.setResult(Common.RESULT_REFRESH)
+                        view.finish()
+                    } else {
+                        view.showToast(it.msg)
+                        if (it.isLoginOut) view.loginOut()
+                    }
+                }
+        }
+    }
+
+    /**
+     * 审核支付
+     * @param order_id 订单id
+     */
+    @SuppressLint("CheckResult")
+    override fun orderAuditPay(order_id: Int){
+        if (isViewAttached()) {
+            view.showLoading()
+            model.orderAuditPay(order_id).compose(RxUtil.applySchedulers())
+                .subscribe {
+                    view.dismissLoading()
+                    if (it.isSuccess) {
+                        view.setResult(Common.RESULT_REFRESH)
+                        view.finish()
+                    } else {
+                        view.showToast(it.msg)
+                        if (it.isLoginOut) view.loginOut()
+
+                    }
+                }
+        }
+    }
+
 }

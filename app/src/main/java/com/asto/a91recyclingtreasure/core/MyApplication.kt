@@ -72,7 +72,7 @@ class MyApplication : Application() {
                 } else if (it.cause is UnknownHostException) {
                     activityList[activityList.size - 1].showToast(getString(R.string.http_error_unknown_host))
                 } else {
-                    activityList[activityList.size - 1].showToast(getString(R.string.http_error))
+                    activityList[activityList.size - 1].showToast(getString(R.string.error))
                 }
             }
         }

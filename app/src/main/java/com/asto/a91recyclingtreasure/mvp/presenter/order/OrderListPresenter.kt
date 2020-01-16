@@ -45,6 +45,7 @@ class OrderListPresenter(var view: OrderListFragment) : BasePresenter(view),
                     //刷新列表
                     view.page = 1
                     selectOrder(view.status, view.page)
+                    view.orderFragment.mPresenter.selectOrderListCount()
                 } else {
                     view.showToast(it.msg)
                     if (it.isLoginOut) view.mActivity.loginOut()

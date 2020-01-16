@@ -5,7 +5,8 @@ class Common {
     companion object {
         const val APP_NAME = "91RecyclingTreasure"
 
-        const val BASE_URL = "http://192.168.1.101:7011/"//Debug地址
+        const val BASE_URL = "http://47.99.201.99:8051/"//测试地址
+//        const val BASE_URL = "http://192.168.1.101:7011/"//Debug地址
 //        const val BASE_URL = "http://192.168.1.101:7011"//服务器地址
         const val HTTP_SUCCESS = 0 //网络请求成功
         const val HTTP_LOGIN_OUT = 120//重新登录

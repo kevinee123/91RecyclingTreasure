@@ -13,6 +13,7 @@ import com.asto.a91recyclingtreasure.base.BaseFragment
 import com.asto.a91recyclingtreasure.base.BasePresenter
 import com.asto.a91recyclingtreasure.bean.OrderCountBean
 import com.asto.a91recyclingtreasure.bean.OrderListBean
+import com.asto.a91recyclingtreasure.bean.OrderStatisticsBean
 import com.asto.a91recyclingtreasure.core.Common
 import com.asto.a91recyclingtreasure.mvp.contract.order.OrderContract
 import com.asto.a91recyclingtreasure.mvp.presenter.order.OrderPresenter
@@ -43,9 +44,14 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
             OrderListFragment(mActivity, this, 4)
         )
 
+    override fun loadData() {
+
+    }
+
     override fun initDatas(mView: View) {
         initTab()
         mPresenter.selectOrderListCount()
+        mPresenter.orderStatistics()
     }
 
     override fun bindinOnClickListener(mView: View) {
@@ -94,6 +100,9 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
             mCountTv.text = "0"
             tab.customView = inflate
             mTabLayout.addTab(tab)
+            if (title == mTitleList[3]){
+                mCountTv.visibility = View.GONE
+            }
         }
         val tabAt = mTabLayout.getTabAt(0)
         val mNameTvAt = tabAt?.customView?.findViewById<TextView>(R.id.mNameTv)
@@ -174,5 +183,13 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
             mCountTv3?.visibility = View.VISIBLE
             mCountTv3?.text = orderCountBean.audit_payOk.toString()
         }
+    }
+
+    /**
+     * 刷新订单今日统计
+     */
+    override fun refreshOrderStatistics(orderStatisticsBean: OrderStatisticsBean) {
+        mOrderCountTv.text = orderStatisticsBean.count.toString()
+        mOrderPayTv.text = orderStatisticsBean.pay.toString()
     }
 }

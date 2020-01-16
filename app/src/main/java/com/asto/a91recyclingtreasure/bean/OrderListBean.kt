@@ -15,5 +15,7 @@ data class OrderListChildBean(
     val created_at: String,
     val gross_weight: Double,
     val id: Int,
-    val name: String
+    val name: String,
+    val net_weight : Double,
+    val actual_pay : Double
 )

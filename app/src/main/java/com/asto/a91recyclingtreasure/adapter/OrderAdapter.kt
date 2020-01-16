@@ -26,14 +26,27 @@ class OrderAdapter(list : List<OrderListChildBean>,val status: Int) : BaseQuickA
             //待审核
             2 ->{
             helper.setText(R.id.mDetailTv, mContext.getString(R.string.audit))
+                helper.setVisible(R.id.mNetWeightTv,true)
+                helper.setVisible(R.id.mTotalPricesTv,true)
+                helper.setText(R.id.mNetWeightTv, String.format(mContext.resources.getString(R.string.net_weight_s_kg),item.net_weight.toString()))
+                    .setText(R.id.mTotalPricesTv, String.format(mContext.resources.getString(R.string.total_prices_s_yuan),item.actual_pay.toString()))
             }
             //审核未付
             3 ->{
                 helper.setText(R.id.mDetailTv, mContext.getString(R.string.payment))
+                helper.setVisible(R.id.mNetWeightTv,true)
+                helper.setVisible(R.id.mTotalPricesTv,true)
+                helper.setText(R.id.mNetWeightTv, String.format(mContext.resources.getString(R.string.net_weight_s_kg),item.net_weight.toString()))
+                    .setText(R.id.mTotalPricesTv, String.format(mContext.resources.getString(R.string.total_prices_s_yuan),item.actual_pay.toString()))
             }
             //审核已付
             4 ->{
                 helper.setText(R.id.mDetailTv, mContext.getString(R.string.look))
+                helper.setVisible(R.id.mNetWeightTv,true)
+                helper.setVisible(R.id.mTotalPricesTv,true)
+                helper.setText(R.id.mNetWeightTv, String.format(mContext.resources.getString(R.string.net_weight_s_kg),item.net_weight.toString()))
+                    .setText(R.id.mTotalPricesTv, String.format(mContext.resources.getString(R.string.total_prices_s_yuan),item.actual_pay.toString()))
+
             }
         }
     }

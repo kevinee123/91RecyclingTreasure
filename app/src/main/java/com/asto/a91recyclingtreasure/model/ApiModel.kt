@@ -128,4 +128,53 @@ interface ApiModel {
     @POST("/api/SelectOrderListCount.action")
     fun selectOrderListCount(): Observable<BaseBean<OrderCountBean>>
 
+    /**
+     * 审核未付
+     * @param order_id 订单id
+     */
+    @POST("/api/OrderAuditNotPay.action")
+    @FormUrlEncoded
+    fun orderAuditNotPay(
+        @Field("order_id") order_id: Int
+    ): Observable<BaseBean<String>>
+
+    /**
+     * 审核支付
+     * @param order_id 订单id
+     */
+    @POST("/api/OrderAuditPay.action")
+    @FormUrlEncoded
+    fun orderAuditPay(
+        @Field("order_id") order_id: Int
+    ): Observable<BaseBean<String>>
+
+    /**
+     * 补单
+     * @param order_id 订单id
+     * @param product_id 产品id
+     * @param gross_weight 毛重id
+     * @param price 价格
+     * @param point 扣点
+     * @param clasp 扣杂
+     * @param actual_pay 实际金额
+     */
+    @POST("/api/CatchOrderDetail.action")
+    @FormUrlEncoded
+    fun catchOrderDetail(
+        @Field("order_id") order_id: Int
+        ,@Field("product_id") product_id: Int
+        ,@Field("gross_weight") gross_weight: Double
+        ,@Field("price") price: Double
+        ,@Field("point") point: Double
+        ,@Field("clasp") clasp: Double
+        ,@Field("actual_pay") actual_pay: Double
+    ): Observable<BaseBean<String>>
+
+    /**
+     * 订单统计
+     */
+    @POST("/api/OrderStatistics.action")
+    fun orderStatistics(
+    ): Observable<BaseBean<OrderStatisticsBean>>
+
 }

@@ -31,7 +31,7 @@ data class Order(
     val status: Int,
     val supplement_time: Any,
     val supplier_id: Int,
-    val total: Int,
+    val total: Double,
     val updated_at: String,
     val void_id: Any,
     val void_time: Any
@@ -59,5 +59,6 @@ data class OrderDetail(
     val supplier_id: Int,
     val net_weight: Double,
     val tare_weight: Double,
-    val updated_at: String
+    val updated_at: String,
+    val actual_pay : Double
 )

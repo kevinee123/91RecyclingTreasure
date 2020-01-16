@@ -18,6 +18,25 @@ class OrderPresenter(var view: OrderFragment) : BasePresenter(view),
     OrderContract.Presenter {
 
     /**
+     * 统计今日订单
+     */
+    @SuppressLint("CheckResult")
+    override fun orderStatistics() {
+        if (isViewAttached()){
+            view.showLoading()
+            model.orderStatistics().compose(RxUtil.applySchedulers()).subscribe {
+                view.dismissLoading()
+                if (it.isSuccess){
+                    view.refreshOrderStatistics(it.data)
+                }else{
+                    view.showToast(it.msg)
+                    if (it.isLoginOut) view.mActivity.loginOut()
+                }
+            }
+        }
+    }
+
+    /**
      * 订单统计条数
      */
     @SuppressLint("CheckResult")

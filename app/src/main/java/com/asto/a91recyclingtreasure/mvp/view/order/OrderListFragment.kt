@@ -31,14 +31,17 @@ class OrderListFragment(override val mActivity: MainActivity,val orderFragment: 
     var totalCount = 0
     var bean: OrderListBean? = null
 
+    override fun loadData() {
+        page = 1
+        mPresenter.selectOrder(status, page)
+        orderFragment.mPresenter.selectOrderListCount()
+        orderFragment.mPresenter.orderStatistics()
+    }
 
     override fun initDatas(mView: View) {
         mAdapter = OrderAdapter(ArrayList(),status)
         mRecyclerView.layoutManager = LinearLayoutManager(mActivity)
         mRecyclerView.adapter = mAdapter
-        page = 1
-        mPresenter.selectOrder(status, page)
-        orderFragment.mPresenter.selectOrderListCount()
     }
 
     override fun bindinOnClickListener(mView: View) {

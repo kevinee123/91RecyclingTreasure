@@ -44,5 +44,16 @@ interface OrderDetailContract {
          */
         fun orderDetailPriceSubmit(order_detail_id: Int, product_id: Int, price: Double,point: Double,clasp: Double,actual_pay: Double)
 
+        /**
+         * 补单
+         * @param order_id 订单id
+         * @param product_id 产品id
+         * @param gross_weight 毛重id
+         * @param price 价格
+         * @param point 扣点
+         * @param clasp 扣杂
+         * @param actual_pay 实际金额
+         */
+        fun catchOrderDetail(order_id: Int, product_id: Int, gross_weight: Double, price: Double, point: Double,clasp: Double,actual_pay: Double)
     }
 }

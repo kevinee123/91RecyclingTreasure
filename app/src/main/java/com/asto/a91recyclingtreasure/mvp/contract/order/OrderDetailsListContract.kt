@@ -40,5 +40,19 @@ interface OrderDetailsListContract {
          * @param status   1 不选择2 审核未付３审核已付
          */
         fun orderSettlement(order_id: Int,status : Int)
+
+
+        /**
+         * 审核未付
+         * @param order_id 订单id
+         */
+        fun orderAuditNotPay(order_id: Int)
+
+        /**
+         * 审核支付
+         * @param order_id 订单id
+         */
+        fun orderAuditPay(order_id: Int)
+
     }
 }

@@ -24,9 +24,7 @@ class LoginPresenter(var view: LoginActivity) : BasePresenter(view), LoginContra
     override fun login() {
         if (isViewAttached()) {
             view.showLoading()
-            //TODO 测试代码 后期修改
-//            model.login(view.mAccountEdt.text.toString(), view.mPasswordEdt.text.toString())
-            model.login("admin", "123456")
+            model.login(view.mAccountEdt.text.toString(), view.mPasswordEdt.text.toString())
                 .compose(RxUtil.applySchedulers()).subscribe {
                 view.dismissLoading()
                 if (it.isSuccess) {

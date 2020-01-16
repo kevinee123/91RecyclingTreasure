@@ -47,6 +47,7 @@ class OrderDetailPresenter(var view: OrderDetailActivity) : BasePresenter(view),
                     view.dismissLoading()
                     if (it.isSuccess) {
                         view.showDetailView(it.data)
+                        selectProductAndType()
                     } else {
                         view.showToast(it.msg)
                         if (it.isLoginOut) view.loginOut()
@@ -94,6 +95,7 @@ class OrderDetailPresenter(var view: OrderDetailActivity) : BasePresenter(view),
             model.orderDetailPriceSubmit(order_detail_id,product_id,price,point,clasp,actual_pay).compose(RxUtil.applySchedulers()).subscribe {
                 view.dismissLoading()
                 if (it.isSuccess) {
+                    view.setResult(Common.RESULT_REFRESH)
                     view.finish()
                 } else {
                     view.showToast(it.msg)
@@ -104,4 +106,31 @@ class OrderDetailPresenter(var view: OrderDetailActivity) : BasePresenter(view),
         }
     }
 
+    /**
+     * 补单
+     * @param order_id 订单id
+     * @param product_id 产品id
+     * @param gross_weight 毛重id
+     * @param price 价格
+     * @param point 扣点
+     * @param clasp 扣杂
+     * @param actual_pay 实际金额
+     */
+    @SuppressLint("CheckResult")
+    override fun catchOrderDetail(order_id: Int, product_id: Int, gross_weight: Double, price: Double, point: Double,clasp: Double,actual_pay: Double){
+        if (isViewAttached()) {
+            view.showLoading()
+            model.catchOrderDetail(order_id, product_id, gross_weight, price, point,clasp,actual_pay).compose(RxUtil.applySchedulers())
+                .subscribe {
+                    view.dismissLoading()
+                    if (it.isSuccess) {
+                        view.setResult(Common.RESULT_REFRESH)
+                        view.finish()
+                    } else {
+                        view.showToast(it.msg)
+                        if (it.isLoginOut) view.loginOut()
+                    }
+                }
+        }
+    }
 }

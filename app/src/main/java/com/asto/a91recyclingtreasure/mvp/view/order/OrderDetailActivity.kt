@@ -18,6 +18,10 @@ import com.asto.recyclingbins.core.showAlertDialog
 import com.asto.recyclingbins.core.to2Point
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_order_detail.*
+import kotlinx.android.synthetic.main.activity_order_detail.mActualPriceRl
+import kotlinx.android.synthetic.main.activity_order_detail.mHeadView
+import kotlinx.android.synthetic.main.activity_order_detail.mSubmitBtn
+import kotlinx.android.synthetic.main.view_head.view.*
 
 /**
  * 作者 ：nxk
@@ -32,7 +36,11 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
     var bean: OrderDetailBean? = null
     var productTypeList: List<ProductTypeBean>? = null
     var typeFragmentList = ArrayList<TypeFragment>()
-    var productId = 0
+    var productId = 0 //品类ID
+    var status = 0 //状态 1.待结算 2.待审核 3.审核未付 4.审核已付
+    var orderDetailId = 0//订单详情ID
+    var orderId = 0 //订单ID
+    var isReplenishment = false//是否是补单
     val textWatcher = object : TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
             autoCalculate()
@@ -47,7 +55,69 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
     }
 
     override fun initData() {
-        mPresenter.selectOrderDetailById(intent.extras?.getInt("order_detail_id") ?: 0)
+        orderDetailId = intent.extras?.getInt("order_detail_id") ?: 0
+        status = intent.extras?.getInt("status") ?: 0
+        orderId = intent.extras?.getInt("orderId") ?: 0
+        isReplenishment = intent.extras?.getBoolean("isReplenishment") == true
+        when (status) {
+            //待结算
+            1 -> {
+                mGrossWeightLl.isEnabled = false
+                mPresenter.selectOrderDetailById(orderDetailId)
+            }
+            //待审核
+            2 -> {
+                if (isReplenishment) {
+                    //补单
+                    mGrossWeightTv.isEnabled = true
+                    mGrossWeightTv.setTextColor(resources.getColor(R.color.green_3EAB73))
+                    mPresenter.selectProductAndType()
+                } else {
+                    //编辑
+                    mGrossWeightLl.isEnabled = false
+                    mPresenter.selectOrderDetailById(orderDetailId)
+                }
+                mCancelBtn.visibility = View.VISIBLE
+                mHeadView.mRightIv.visibility = View.GONE
+            }
+            //审核未付
+            3 -> {
+                //查看
+                mSubmitBtn.visibility = View.GONE
+                mGrossWeightLl.isEnabled = false
+                mPriceLl.isEnabled = false
+                mPriceEt.isEnabled = false
+                mPriceEt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mPointLl.isEnabled = false
+                mPointEdt.isEnabled = false
+                mPointEdt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mClaspLl.isEnabled = false
+                mClaspEdt.isEnabled = false
+                mClaspEdt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mActualPriceRl.isEnabled = false
+                mActualPriceEdt.isEnabled = false
+                mPresenter.selectOrderDetailById(orderDetailId)
+            }
+            //审核已付
+            4 -> {
+                //查看
+                mSubmitBtn.visibility = View.GONE
+                mOrderDeleteBtn.visibility = View.VISIBLE
+                mGrossWeightLl.isEnabled = false
+                mPriceLl.isEnabled = false
+                mPriceEt.isEnabled = false
+                mPriceEt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mPointLl.isEnabled = false
+                mPointEdt.isEnabled = false
+                mPointEdt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mClaspLl.isEnabled = false
+                mClaspEdt.isEnabled = false
+                mClaspEdt.setTextColor(resources.getColor(R.color.gray_B2B2B2))
+                mActualPriceRl.isEnabled = false
+                mActualPriceEdt.isEnabled = false
+                mPresenter.selectOrderDetailById(orderDetailId)
+            }
+        }
     }
 
     override fun bindinOnClickListener() {
@@ -75,6 +145,10 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
             //单价
             mPriceEt.requestFocusAndShowKeyboard()
         }
+        mGrossWeightLl.setOnClickListener {
+            //毛重
+            mGrossWeightTv.requestFocusAndShowKeyboard()
+        }
         mPointLl.setOnClickListener {
             //扣点
             mPointEdt.requestFocusAndShowKeyboard()
@@ -86,23 +160,74 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
         mPriceEt.addTextChangedListener(textWatcher)
         mPointEdt.addTextChangedListener(textWatcher)
         mClaspEdt.addTextChangedListener(textWatcher)
+        mGrossWeightTv.addTextChangedListener(textWatcher)
+
         mHeadView.setRightBtnListener(onClickListener = View.OnClickListener {
             //删除订单详情
-            showAlertDialog(this,getString(R.string.delete_detail_msg)) {
+            showAlertDialog(this, getString(R.string.delete_detail_msg)) {
                 it.dismiss()
-                mPresenter.deleteOrderDetailById(intent.extras?.getInt("order_detail_id") ?: 0)
+                mPresenter.deleteOrderDetailById(orderDetailId)
             }
         })
         mSubmitBtn.setOnClickListener {
             //提交
-            mPresenter.orderDetailPriceSubmit(
-                intent.extras?.getInt("order_detail_id") ?: 0,
-                productId,
-                mPriceEt.text.toString().toDouble(),
-                mPointEdt.text.toString().toDouble(),
-                mClaspEdt.text.toString().toDouble(),
-                mActualPriceEdt.text.toString().toDouble()
-            )
+            when (status) {
+                //待结算
+                1 -> {
+                    mPresenter.orderDetailPriceSubmit(
+                        orderDetailId,
+                        productId,
+                        mPriceEt.text.toString().toDouble(),
+                        mPointEdt.text.toString().toDouble(),
+                        mClaspEdt.text.toString().toDouble(),
+                        mActualPriceEdt.text.toString().toDouble()
+                    )
+                }
+                //待审核
+                2 -> {
+                    //补单
+                    if (isReplenishment) {
+                        mPresenter.catchOrderDetail(
+                            orderId,
+                            productId,
+                            mGrossWeightTv.text.toString().toDouble(),
+                            mPriceEt.text.toString().toDouble(),
+                            mPointEdt.text.toString().toDouble(),
+                            mClaspEdt.text.toString().toDouble(),
+                            mActualPriceEdt.text.toString().toDouble()
+                        )
+                    } else {
+                        mPresenter.orderDetailPriceSubmit(
+                            orderDetailId,
+                            productId,
+                            mPriceEt.text.toString().toDouble(),
+                            mPointEdt.text.toString().toDouble(),
+                            mClaspEdt.text.toString().toDouble(),
+                            mActualPriceEdt.text.toString().toDouble()
+                        )
+                    }
+                }
+                //审核未付
+                3 -> {
+                }
+                //审核已付
+                4 -> {
+                }
+            }
+        }
+
+        //待审核
+        mCancelBtn.setOnClickListener {
+            //取消
+            finish()
+        }
+
+        mOrderDeleteBtn.setOnClickListener {
+            //磅单作废
+            showAlertDialog(this, getString(R.string.delete_order_msg)) {
+                it.dismiss()
+                mPresenter.deleteOrderDetailById(orderDetailId)
+            }
         }
     }
 
@@ -111,12 +236,11 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
         productId = bean?.product_id ?: 0
         mHeadView.setTitle(orderDetailBean.sname)
         mPriceEt.setText(to2Point(orderDetailBean.price))//单价
-        mGrossWeightTv.text = to2Point(orderDetailBean.gross_weight)//毛重
+        mGrossWeightTv.setText(to2Point(orderDetailBean.gross_weight))//毛重
         mPointEdt.setText(to2Point(orderDetailBean.point))
         mClaspEdt.setText(to2Point(orderDetailBean.clasp))
         autoCalculate()
         mActualPriceEdt.setText(bean?.actual_pay.toString())
-        mPresenter.selectProductAndType()
     }
 
     override fun showProductView(list: List<ProductTypeBean>) {
@@ -126,7 +250,8 @@ class OrderDetailActivity : BaseActivity(), OrderDetailContract.View {
                 typeFragmentList.add(
                     TypeFragment(
                         this,
-                        it.product
+                        it.product,
+                        status
                     ) {
                         productId = it
                         notifyDataSetChangedForProduct()

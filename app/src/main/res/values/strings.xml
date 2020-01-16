@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">91回收宝</string>
     <string name="welcome_back">欢迎您回来</string>
+    <!--异常-->
+    <string name="error">未知异常</string>
     <string name="http_error">未知网络异常</string>
+    <string name="http_error_time_out">连接超时</string>
+    <string name="http_error_cannot_connect">无法连接到服务器，请检查网络</string>
+    <string name="http_error_file_not_found">服务器搬家了，请稍后再试</string>
+    <string name="http_error_unknown_host">服务器地址错误，请检查网络</string>
 
     <string name="pls_input_account_name">请输入用户名</string>
     <string name="pls_input_password">请输入密码</string>
@@ -21,10 +27,6 @@
     <string name="edit">编辑</string>
     <string name="delete">删除</string>
     <string name="order_count">单数</string>
-    <string name="http_error_time_out">连接超时</string>
-    <string name="http_error_cannot_connect">无法连接到服务器，请检查网络</string>
-    <string name="http_error_file_not_found">服务器搬家了，请稍后再试</string>
-    <string name="http_error_unknown_host">服务器地址错误，请检查网络</string>
     <string name="actual_price">实际总价：</string>
     <string name="merger_review">合并审核</string>
     <string name="merger_review_msg">提交即完成付款审核</string>
@@ -43,6 +45,10 @@
     <string name="point">扣点</string>
     <string name="clasp">扣杂</string>
     <string name="settlement_price">结算总价</string>
+    <string name="replenishment">补单</string>
+    <string name="audit_pay_no">审核通过/暂不支付</string>
+    <string name="audit_pay_ok">审核通过/现场支付</string>
+    <string name="order_delete">磅单作废</string>
 
     <!--单位-->
     <string name="unit_ge">个</string>
@@ -54,4 +60,7 @@
     <string name="sure">确认</string>
     <string name="delete_detail_msg">是否将该品类删除？\n删除后不可恢复</string>
     <string name="delete_order_msg">是否将该笔订单作废？\n作废后不可恢复</string>
+    <string name="confirm_payment">确认已支付</string>
+    <string name="net_weight_s_kg">净重  %skg</string>
+    <string name="total_prices_s_yuan">总价  %s元</string>
 </resources>

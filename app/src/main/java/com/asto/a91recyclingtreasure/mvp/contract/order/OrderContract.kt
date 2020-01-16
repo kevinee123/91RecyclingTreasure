@@ -1,6 +1,7 @@
 package com.asto.a91recyclingtreasure.mvp.contract.order
 
 import com.asto.a91recyclingtreasure.bean.OrderCountBean
+import com.asto.a91recyclingtreasure.bean.OrderStatisticsBean
 
 /**
  * 作者 ：nxk
@@ -15,12 +16,22 @@ interface OrderContract {
          */
         fun refreshTitleCount(orderCountBean : OrderCountBean)
 
+        /**
+         * 刷新今日订单统计
+         */
+        fun refreshOrderStatistics(orderStatisticsBean: OrderStatisticsBean)
     }
 
     interface Presenter {
+
         /**
          * 订单统计条数
          */
         fun selectOrderListCount()
+
+        /**
+         * 统计今日订单
+         */
+        fun orderStatistics()
     }
 }

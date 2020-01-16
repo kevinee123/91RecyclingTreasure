@@ -20,7 +20,7 @@ class OrderDetailAdapter(list: List<OrderDetail>,val status : Int) :
             .setText(R.id.mWeightTv,String.format(mContext.getString(R.string.gross_weight_d_unit), to2Point(item.gross_weight)))//毛重
             .setText(R.id.mPriceTv,String.format(mContext.getString(R.string.price_d_unit),to2Point(item.price)))//单价
             .setText(R.id.mSuttleTv,String.format(mContext.getString(R.string.suttle_d_unit),to2Point(item.net_weight)))//净重
-            .setText(R.id.mSubtotalTv,String.format(mContext.getString(R.string.rmb_d),to2Point(item.price * item.net_weight)))//小计
+            .setText(R.id.mSubtotalTv,String.format(mContext.getString(R.string.rmb_d),item.actual_pay.toString()))//小计
             .addOnClickListener(R.id.mDeleteTv)
             .addOnClickListener(R.id.mDetailTv)
         when(status) {

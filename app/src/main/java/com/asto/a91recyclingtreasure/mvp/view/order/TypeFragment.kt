@@ -15,13 +15,22 @@ import kotlinx.android.synthetic.main.fragment_type.*
  * 日期 ：2020/1/9
  * 备注 ：品类
  */
-class TypeFragment(override val mActivity: BaseActivity,val list : List<Product>,val onSelectedProduct :(productId : Int) ->Unit) : BaseFragment<BaseActivity>(){
+class TypeFragment(
+    override val mActivity: BaseActivity,
+    val list: List<Product>,
+    val status: Int,
+    val onSelectedProduct: (productId: Int) -> Unit
+) : BaseFragment<BaseActivity>() {
     override val layoutId: Int
         get() = R.layout.fragment_type
     override val mPresenter = BasePresenter(mActivity)
-    var adapter : TypeAdapter? = null
+    var adapter: TypeAdapter? = null
+
+    override fun loadData() {
+    }
+
     override fun initDatas(mView: View) {
-        val mTypeSmallLayoutManager = GridLayoutManager(mActivity,4)
+        val mTypeSmallLayoutManager = GridLayoutManager(mActivity, 4)
         adapter = TypeAdapter(list)
         mRecyclerView.layoutManager = mTypeSmallLayoutManager
         mRecyclerView.adapter = adapter
@@ -29,7 +38,8 @@ class TypeFragment(override val mActivity: BaseActivity,val list : List<Product>
 
     override fun bindinOnClickListener(mView: View) {
         adapter?.setOnItemClickListener { adapter, view, position ->
-            onSelectedProduct(list[position].id)
+            if (status != 3 && status != 4)
+                onSelectedProduct(list[position].id)
         }
     }
 
