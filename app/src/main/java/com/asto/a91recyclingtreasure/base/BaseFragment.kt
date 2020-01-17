@@ -22,6 +22,7 @@ abstract class BaseFragment<A : BaseActivity> : Fragment(),IView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mPresenter.attachView(this)
         initDatas(mView)
         bindinOnClickListener(mView)
     }
@@ -81,6 +82,7 @@ abstract class BaseFragment<A : BaseActivity> : Fragment(),IView {
         // 所以最好是当前Fragment可见，并且当前Fragment中相关View控件都初始化ok时我们在调用数据请求刷新
         // 通过isViewInitiated为true来判断View控件是否初始化成功
         if (isVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate) ) {
+            mPresenter.attachView(this)
             loadData()
             isDataInitiated = true
         }

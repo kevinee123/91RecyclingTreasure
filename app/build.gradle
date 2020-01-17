@@ -15,10 +15,39 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    signingConfigs {
+        release {
+            storeFile file('./release/91rt.jks')
+            storePassword '123456'
+            keyAlias '123456'
+            keyPassword '123456'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    if (!variant.buildType.isDebuggable()) {
+                        // 获取签名的名字 variant.signingConfig.name
+                        // 要被替换的源字符串
+                        def sourceFile = "app-release"
+                        // 替换的字符串
+                        def replaceFile = "91_hsb_V${variant.versionName}_${releaseTime()}"
+                        outputFileName = output.outputFile.name.replace(sourceFile, replaceFile)
+                    }
+                }
+            }
+        }
+
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -62,4 +91,9 @@ dependencies {
     implementation 'org.jetbrains.anko:anko-sdk15-coroutines:0.10.8'
     // AutoSize
     implementation 'me.jessyan:autosize:1.1.2'
+}
+
+// 获取日期方法
+def releaseTime() {
+    return new Date().format("yyMMdd_HHmm")
 }

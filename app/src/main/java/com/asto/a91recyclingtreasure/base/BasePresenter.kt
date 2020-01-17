@@ -7,6 +7,9 @@ open class BasePresenter(var mView :IView?){
     val model: ApiModel
         get() = RetrofitUtil.getRetrofit().create(ApiModel::class.java)
 
+    fun attachView(view :IView){
+        mView = view
+    }
     fun detachView(){
         mView = null
     }

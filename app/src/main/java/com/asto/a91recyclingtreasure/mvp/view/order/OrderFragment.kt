@@ -50,8 +50,8 @@ class OrderFragment(override val mActivity: MainActivity) : BaseFragment<MainAct
 
     override fun initDatas(mView: View) {
         initTab()
-        mPresenter.selectOrderListCount()
-        mPresenter.orderStatistics()
+//        mPresenter.selectOrderListCount()
+//        mPresenter.orderStatistics()
     }
 
     override fun bindinOnClickListener(mView: View) {
