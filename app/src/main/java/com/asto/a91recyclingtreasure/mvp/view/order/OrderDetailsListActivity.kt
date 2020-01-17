@@ -74,6 +74,10 @@ class OrderDetailsListActivity : BaseActivity(), OrderDetailsListContract.View {
     }
 
     override fun bindinOnClickListener() {
+        mSwipeRefreshLayout.setOnRefreshListener {
+            //刷新
+            mPresenter.selectOrderDetailById(orderId)
+        }
         mMergerReviewBtn.setOnClickListener {
             //合并审核
             mMergerReviewBtn.isSelected = !mMergerReviewBtn.isSelected

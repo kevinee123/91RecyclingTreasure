@@ -8,10 +8,6 @@ package com.asto.a91recyclingtreasure.mvp.contract
 interface MainContract {
 
     interface View{
-        /**
-         * 显示订单界面
-         */
-        fun showOrder()
     }
     interface Presenter {
         /**

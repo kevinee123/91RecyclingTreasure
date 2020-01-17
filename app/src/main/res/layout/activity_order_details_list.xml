@@ -29,13 +29,18 @@
         android:layout_marginTop="30dp"
         android:background="@color/black_10" />
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/mSwipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/mSubLl"
+        android:layout_below="@+id/mLineV"
+        android:layout_height="wrap_content">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/mSubLl"
-        android:layout_below="@+id/mLineV" />
-
+        android:layout_height="wrap_content" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <LinearLayout
         android:id="@+id/mSubLl"
         android:layout_width="match_parent"

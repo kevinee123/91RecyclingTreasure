@@ -177,4 +177,11 @@ interface ApiModel {
     fun orderStatistics(
     ): Observable<BaseBean<OrderStatisticsBean>>
 
+    /**
+     * 登出
+     */
+    @POST("/api/LoginOut.action")
+    fun loginOut(
+    ): Observable<BaseBean<String>>
+
 }

@@ -63,4 +63,6 @@
     <string name="confirm_payment">确认已支付</string>
     <string name="net_weight_s_kg">净重  %skg</string>
     <string name="total_prices_s_yuan">总价  %s元</string>
+    <string name="login_out">退出登录</string>
+    <string name="center">个人中心</string>
 </resources>

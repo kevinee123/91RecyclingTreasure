@@ -1,14 +1,13 @@
 package com.asto.a91recyclingtreasure.mvp.presenter.order
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import com.asto.a91recyclingtreasure.base.BasePresenter
 import com.asto.a91recyclingtreasure.core.Common
 import com.asto.a91recyclingtreasure.mvp.contract.order.OrderDetailsListContract
-import com.asto.a91recyclingtreasure.mvp.view.order.OrderDetailActivity
 import com.asto.a91recyclingtreasure.mvp.view.order.OrderDetailsListActivity
 import com.asto.a91recyclingtreasure.util.RxUtil
 import com.asto.recyclingbins.core.loginOut
+import kotlinx.android.synthetic.main.activity_order_details_list.*
 
 /**
  * 作者 ：nxk
@@ -27,6 +26,7 @@ class OrderDetailsListPresenter(var view: OrderDetailsListActivity) : BasePresen
             view.showLoading()
             model.selectOrderById(orderId).compose(RxUtil.applySchedulers()).subscribe {
                 view.dismissLoading()
+                view.mSwipeRefreshLayout.isRefreshing = false
                 if (it.isSuccess) {
                     view.showList(it.data)
                 } else {
